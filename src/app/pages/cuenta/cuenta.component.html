@@ -1,0 +1,20 @@
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Mi Cuenta</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="card shadow p-4" *ngIf="usuario; else sinUsuario">
+          <h4>Datos del usuario</h4>
+          <p class="mb-1"><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+          <p class="mb-1"><strong>Correo:</strong> {{ usuario.correo }}</p>
+          <p class="mb-0"><strong>Ultimo acceso:</strong> {{ usuario.fechaLogin | date:'medium' }}</p>
+        </div>
+        <ng-template #sinUsuario>
+          <div class="alert alert-warning text-center">
+            No has iniciado sesion. <a routerLink="/login">Ir al login</a>.
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+<section class="hero-banner text-white text-center py-5">
+  <div class="container py-5">
+    <h1 class="display-3 fw-bold">{{ titulo }}</h1>
+    <p class="lead">{{ subtitulo }}</p>
+    <p>PCs, laptops, pantallas, componentes y mas</p>
+    <a routerLink="/productos" class="btn btn-light btn-lg mt-3">Ver Productos</a>
+  </div>
+</section>
+
+<section class="bg-dark text-white py-5">
+  <div class="container">
+    <h2 class="text-center mb-4 fw-bold">Nosotros</h2>
+    <div class="row align-items-center g-4">
+      <div class="col-md-6">
+        <p class="fs-5">TechnoGaming nace con la mision de brindar tecnologia de calidad al mejor precio.</p>
+        <p class="fs-5">Trabajamos con proveedores oficiales para garantizar productos originales y con garantia.</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <img [src]="imagenNosotros" alt="Nosotros TechnoGaming" class="img-fluid rounded shadow">
+      </div>
+    </div>
+  </div>
+</section>

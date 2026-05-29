@@ -1,0 +1,41 @@
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold">Contacto</h2>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card p-4 shadow h-100 text-center"><i class="bi bi-geo-alt-fill text-primary display-4"></i><h5 class="mt-3">Direccion</h5><p class="text-muted">Av. Tecnologica 456, Lima, Peru</p></div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-4 shadow h-100 text-center"><i class="bi bi-telephone-fill text-primary display-4"></i><h5 class="mt-3">Telefono</h5><p class="text-muted">+51 987 654 321</p></div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-4 shadow h-100 text-center"><i class="bi bi-envelope-fill text-primary display-4"></i><h5 class="mt-3">Correo</h5><p class="text-muted">ventas@technogaming.pe</p></div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-4 shadow h-100 text-center"><i class="bi bi-clock-fill text-primary display-4"></i><h5 class="mt-3">Horario</h5><p class="text-muted">Lunes a Sabado</p><p class="text-muted">9:00 AM - 7:00 PM</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <form class="card p-4 shadow" #formContacto="ngForm" (ngSubmit)="enviar()">
+          <div class="alert alert-success" *ngIf="enviado">Mensaje enviado correctamente.</div>
+          <div class="mb-3">
+            <label class="form-label" for="nombre">Nombre</label>
+            <input class="form-control" id="nombre" name="nombre" [(ngModel)]="contacto.nombre" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="correo">Correo</label>
+            <input class="form-control" id="correo" name="correo" type="email" [(ngModel)]="contacto.correo" required email>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="mensaje">Mensaje</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" [(ngModel)]="contacto.mensaje" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" [disabled]="formContacto.invalid">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

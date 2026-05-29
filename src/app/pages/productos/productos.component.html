@@ -1,0 +1,90 @@
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-2 fw-bold">Productos</h2>
+    <p class="text-center text-muted mb-4">Ultima consulta: {{ fechaConsulta | date:'dd/MM/yyyy HH:mm' }}</p>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-8">
+        <input class="form-control" type="text" placeholder="Buscar producto" [(ngModel)]="busqueda">
+      </div>
+      <div class="col-md-4">
+        <select class="form-select" [(ngModel)]="categoriaSeleccionada">
+          <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="alert alert-info" *ngIf="cargando">Cargando productos desde JSON Server...</div>
+    <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+    <div class="row g-4" *ngIf="!cargando && !error">
+      <div class="col-12" *ngIf="productosFiltrados.length === 0">
+        <div class="alert alert-warning">No hay productos que coincidan con la busqueda.</div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4" *ngFor="let producto of productosFiltrados">
+        <div class="card h-100 shadow-sm card-hover">
+          <img class="card-img-top product-img" [src]="producto.imagen" [alt]="producto.nombre">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ producto.nombre | uppercase }}</h5>
+            <p class="card-text mb-1">Categoria: {{ producto.categoria | lowercase }}</p>
+            <p class="card-text text-primary fw-bold fs-5">{{ producto.precio | currency:'PEN':'symbol':'1.2-2' }}</p>
+            <p class="card-text" [ngStyle]="estiloStock(producto)">Stock: {{ producto.stock }}</p>
+            <span class="badge align-self-start mb-3" [ngClass]="producto.stock <= 5 ? 'badge-stock-low' : 'badge-stock-ok'">
+              {{ producto.stock <= 5 ? 'Stock bajo' : 'Disponible' }}
+            </span>
+            <button class="btn btn-outline-primary mt-auto" type="button" [disabled]="producto.stock === 0" (click)="agregarAlCarrito(producto)">
+              <i class="bi bi-cart-plus"></i> Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-4 fw-bold"><i class="bi bi-cart3"></i> Carrito de Compras</h2>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="carrito.length === 0">
+            <td colspan="5" class="text-center text-muted">El carrito esta vacio</td>
+          </tr>
+          <tr *ngFor="let item of carrito">
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.precio | currency:'PEN':'symbol':'1.2-2' }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.precio * item.cantidad | currency:'PEN':'symbol':'1.2-2' }}</td>
+            <td><button class="btn btn-danger btn-sm" type="button" (click)="eliminarDelCarrito(item.id)">Eliminar</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="fw-bold">
+            <td colspan="3" class="text-end">Descuento:</td>
+            <td>{{ descuento | currency:'PEN':'symbol':'1.2-2' }}</td>
+            <td></td>
+          </tr>
+          <tr class="fw-bold fs-5">
+            <td colspan="3" class="text-end">Total:</td>
+            <td>{{ total | currency:'PEN':'symbol':'1.2-2' }}</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="text-end mt-3">
+      <button class="btn btn-success btn-lg" type="button" [disabled]="carrito.length === 0" (click)="finalizarCompra()">Finalizar Compra</button>
+    </div>
+  </div>
+</section>

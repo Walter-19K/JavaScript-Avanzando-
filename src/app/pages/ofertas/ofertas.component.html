@@ -1,0 +1,16 @@
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Ofertas</h2>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let oferta of ofertas">
+        <div class="card h-100 shadow card-hover">
+          <div class="card-body text-center">
+            <i class="bi bi-tag-fill display-4 text-danger"></i>
+            <h5 class="card-title mt-3">{{ oferta.titulo }}</h5>
+            <p class="card-text">{{ oferta.detalle }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

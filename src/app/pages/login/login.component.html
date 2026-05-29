@@ -1,0 +1,26 @@
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <form class="card p-4 shadow" #loginForm="ngForm" (ngSubmit)="iniciarSesion()">
+          <h2 class="text-center fw-bold mb-4">Login</h2>
+          <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+          <div class="mb-3">
+            <label class="form-label" for="correo">Correo electronico</label>
+            <input class="form-control" id="correo" name="correo" type="email" required email [(ngModel)]="credenciales.correo" #correo="ngModel">
+            <small class="text-danger" *ngIf="correo.invalid && correo.touched">Correo obligatorio y valido.</small>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="password">Contrasena</label>
+            <input class="form-control" id="password" name="password" type="password" required minlength="6" [(ngModel)]="credenciales.password" #password="ngModel">
+            <small class="text-danger" *ngIf="password.invalid && password.touched">Minimo 6 caracteres.</small>
+          </div>
+
+          <button class="btn btn-primary w-100" type="submit" [disabled]="loginForm.invalid">Iniciar sesion</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
