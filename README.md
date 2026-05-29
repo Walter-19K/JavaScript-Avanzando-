@@ -55,15 +55,11 @@ Para generar la version de produccion:
 ```bash
 npm run build
 ```
-
-Luego se puede publicar la carpeta `dist/technogaming-ap2-angular/browser` en Netlify, Vercel, Firebase Hosting o GitHub Pages.
-
-> Pendiente obligatorio para la entrega final academica: reemplazar esta seccion con el enlace real del proyecto desplegado y el enlace real del repositorio GitHub una vez subido por el equipo.
-
 ## Repositorio GitHub
 
-Agregar aqui el enlace final del repositorio del equipo.
+https://github.com/Walter-19K/JavaScript-Avanzando-
 
 ## Proyecto desplegado
 
-Agregar aqui el enlace final del proyecto online.
+https://ap2javascript-avanzando.onrender.com
+
