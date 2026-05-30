@@ -5,7 +5,7 @@ import { Producto } from '../models/producto.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProductoService {
-  private apiUrl = 'http://localhost:3000/productos';
+  private apiUrl = 'https://javascript-avanzando.onrender.com/productos';
 
   constructor(private http: HttpClient) {}
 

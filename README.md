@@ -61,5 +61,5 @@ https://github.com/Walter-19K/JavaScript-Avanzando-
 
 ## Proyecto desplegado
 
-https://ap2javascript-avanzando.onrender.com
+https://javascript-avanzando-practicas.onrender.com/
 
